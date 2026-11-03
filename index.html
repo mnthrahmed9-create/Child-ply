@@ -6,119 +6,50 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#071333">
 <title>مغامرات العباقرة 3D</title>
+
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;font-family:Tahoma,Arial,sans-serif;
- color:white;background:#07132f;
+ margin:0;font-family:Tahoma,Arial;
+ background:#07132f;color:white;
  min-height:100vh;overflow-x:hidden;
 }
 button{font-family:inherit;cursor:pointer;border:0}
 button:active{transform:scale(.94)}
 #app{
  min-height:100vh;
- background:
- radial-gradient(ellipse at 50% 25%,#344b9a 0%,transparent 50%),
- linear-gradient(180deg,#07102e,#182b68 55%,#09132d);
- position:relative;overflow:hidden;
+ background:radial-gradient(ellipse at 50% 20%,#394e9b,#101b48 55%,#07132f);
 }
-.stars-bg{
- position:fixed;inset:0;pointer-events:none;
- background-image:
- radial-gradient(2px 2px at 10% 15%,white,transparent),
- radial-gradient(2px 2px at 70% 20%,#ffe78a,transparent),
- radial-gradient(2px 2px at 90% 50%,white,transparent),
- radial-gradient(2px 2px at 30% 70%,white,transparent),
- radial-gradient(2px 2px at 55% 90%,#ffe78a,transparent);
- background-size:190px 190px;
- opacity:.7;z-index:0;
-}
-.page{
- position:relative;z-index:1;
- width:100%;max-width:650px;
- margin:auto;padding:12px;
-}
+.page{max-width:650px;margin:auto;padding:12px}
 header{
- display:flex;justify-content:space-around;align-items:center;
- background:linear-gradient(135deg,#142b63,#07142e);
- border:2px solid #e6bd5d;
- border-radius:17px;padding:9px 4px;
- box-shadow:0 0 15px #ffcd5b55;
+ display:flex;justify-content:space-around;
+ background:linear-gradient(135deg,#172e68,#07142e);
+ border:2px solid #e9c45f;border-radius:17px;
+ padding:10px 4px;box-shadow:0 0 15px #ffce5b55;
 }
-.stat{font-size:12px;text-align:center;font-weight:bold}
-.stat b{display:block;color:#ffdb64;font-size:17px;margin-top:4px}
-h1{
- font-size:clamp(27px,7vw,39px);
- margin:17px 0 5px;
- color:#ffdc64;
- text-shadow:0 3px 0 #9c4c00,0 0 15px #ffd84d;
-}
-.subtitle{font-size:14px;color:#fff0ae}
+.stat{font-size:12px;text-align:center}
+.stat b{display:block;color:#ffdf68;font-size:17px;margin-top:5px}
 .hero{
- position:relative;margin-top:15px;
- padding:16px 10px 20px;
- border:2px solid #f6cf62;
+ margin-top:15px;padding:15px 8px;
+ text-align:center;border:2px solid #f4ce64;
  border-radius:25px;
- background:
- radial-gradient(ellipse at 50% 100%,#236ed1,#17265a 60%,#101a40);
- box-shadow:0 0 22px #48aaff55,inset 0 0 20px #fff2;
- overflow:hidden;
+ background:radial-gradient(ellipse at bottom,#2369bd,#142254 65%,#101839);
+ box-shadow:0 0 22px #48aaff55;
 }
-.hero:before{
- content:"";position:absolute;inset:0;
- background:radial-gradient(circle at 15% 25%,#ffe37c66,transparent 25%),
- radial-gradient(circle at 85% 30%,#65dfff66,transparent 25%);
- pointer-events:none;
-}
-.world{
- position:relative;z-index:1;
- display:flex;align-items:center;justify-content:center;
- gap:3px;min-height:145px;
-}
-.child{font-size:95px;filter:drop-shadow(0 7px 7px #0008)}
-.robot{font-size:75px;filter:drop-shadow(0 7px 7px #0008)}
-.planet{position:absolute;font-size:39px;top:3px;right:10px}
-.rocket{position:absolute;font-size:35px;left:10px;top:8px}
-.castle{position:absolute;font-size:52px;bottom:0;left:8px;opacity:.85}
-.title-logo{
- position:relative;z-index:1;
- font-size:27px;font-weight:1000;
- color:#ffe36e;text-shadow:0 3px 0 #813d08,0 0 12px #ffc83e;
-}
-.logo-blue{color:#50d9ff;font-size:33px}
-.hero-text{
- position:relative;z-index:1;
- background:linear-gradient(90deg,#9c6200,#ffe77a,#a65a00);
- color:#311600;border-radius:15px;
- display:inline-block;padding:7px 17px;
- font-weight:bold;font-size:13px;
- box-shadow:0 3px 0 #6e3900;
-}
-.quick{
- display:flex;justify-content:center;gap:9px;
- margin:16px 0 12px;
-}
-.quick button{
- width:48px;height:43px;border-radius:14px;
- background:linear-gradient(145deg,#fff,#bac7e6);
- color:#14234e;font-size:20px;
- box-shadow:0 4px 0 #52628b;
-}
-.section-title{
- font-size:18px;color:#ffe17a;margin:17px 0 12px;
-}
-.games{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:10px;
-}
+.world{font-size:75px;margin:8px}
+.title{font-size:30px;color:#ffdf68;text-shadow:0 3px #8e4900}
+.title span{color:#51dfff;font-size:36px}
+.hero p{background:linear-gradient(90deg,#a35e00,#ffe67b,#a35e00);
+ color:#351900;padding:8px;border-radius:15px;font-weight:bold}
+.section{color:#ffdf70;font-size:19px;margin:20px 0 12px}
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .game{
- min-height:95px;border-radius:18px;
+ min-height:95px;border-radius:18px;color:white;
+ font-weight:bold;font-size:13px;
  border:2px solid #ffffff99;
- box-shadow:0 5px 0 #0006,inset 0 2px 5px #fff8;
- color:white;font-weight:bold;font-size:13px;
- text-shadow:0 2px 3px #0008;
+ box-shadow:0 5px 0 #0005,inset 0 2px 5px #fff8;
 }
-.game span{display:block;font-size:35px;margin-bottom:6px}
+.game span{display:block;font-size:35px;margin-bottom:7px}
 .g1{background:linear-gradient(145deg,#a83cff,#5014a9)}
 .g2{background:linear-gradient(145deg,#74e45b,#087c3d)}
 .g3{background:linear-gradient(145deg,#29baff,#064cb4)}
@@ -127,60 +58,44 @@ h1{
 .g6{background:linear-gradient(145deg,#35e5c1,#047b72)}
 .g7{background:linear-gradient(145deg,#ffda59,#aa6500)}
 .g8{background:linear-gradient(145deg,#ff827c,#a92943)}
-.bottom-actions{
+.g9{background:linear-gradient(145deg,#805bff,#30209b)}
+.bottom{
  display:grid;grid-template-columns:1fr 1.5fr 1fr;
- align-items:center;gap:7px;margin-top:20px;
+ gap:7px;margin-top:20px;
 }
-.gold-btn{
- background:linear-gradient(180deg,#fff18c,#ffb900,#e87800);
- border:3px solid #fff0a0;color:#351900;
- border-radius:25px;padding:13px 5px;
- font-size:17px;font-weight:1000;
- box-shadow:0 5px 0 #854200,0 0 13px #ffcb40;
+.action{
+ padding:12px 8px;border-radius:17px;
+ font-size:14px;font-weight:bold;
+ background:linear-gradient(145deg,#fff18c,#f3a700);
+ color:#351900;box-shadow:0 4px 0 #995300;
+ margin:4px;
 }
-.side-btn{
- background:linear-gradient(145deg,#a54bff,#4612a1);
- color:white;border:2px solid #e7c8ff;
- border-radius:17px;padding:10px 4px;
- font-size:12px;font-weight:bold;
- box-shadow:0 4px 0 #28075e;
-}
-#gameScreen,#parentsScreen{display:none}
+.back{background:linear-gradient(145deg,#9eafff,#4d64b0);color:white}
+.purple{background:linear-gradient(145deg,#b45cff,#5420ae);color:white}
+#gameScreen,#parents{display:none}
 .card{
  background:linear-gradient(145deg,#192f68,#101a40);
- border:2px solid #f2cf66;
- border-radius:25px;padding:17px;
- margin-top:20px;
+ border:2px solid #f2cf66;border-radius:25px;
+ padding:14px;margin-top:20px;
  box-shadow:0 0 18px #3d9dff44;
 }
 #gameTitle{color:#ffdf76;font-size:23px}
 #playArea{
  min-height:330px;background:linear-gradient(145deg,#e8f7ff,#fff);
- border-radius:20px;color:#25345b;
- padding:15px;display:flex;
- flex-wrap:wrap;align-items:center;
- justify-content:center;align-content:center;
- overflow:hidden;position:relative;
+ border-radius:20px;color:#26345b;padding:12px;
+ display:flex;flex-wrap:wrap;
+ align-items:center;justify-content:center;
+ align-content:center;overflow:hidden;
 }
 .target{
- width:100%;font-size:21px;font-weight:bold;
- color:#5637a2;margin:8px;
+ width:100%;font-size:22px;font-weight:bold;
+ color:#5637a2;margin:10px;
 }
-.message{
- color:#ffe17c;font-size:18px;
- font-weight:bold;min-height:32px;margin:12px;
-}
-.action{
- border-radius:17px;padding:12px 17px;
- font-size:15px;font-weight:bold;margin:5px;
- background:linear-gradient(145deg,#ffe98b,#f3a700);
- color:#362000;box-shadow:0 4px 0 #995300;
-}
-.back{background:linear-gradient(145deg,#b9caff,#586eb8);color:white}
+.message{color:#ffe17c;font-size:19px;font-weight:bold;min-height:35px;margin:10px}
 .choice{
  width:85px;height:85px;border-radius:20px;
- background:#e4f0ff;font-size:49px;
- box-shadow:0 5px 0 #8b9cba;margin:6px;
+ background:#e4f0ff;font-size:49px;margin:6px;
+ box-shadow:0 5px 0 #8b9cba;
 }
 .bubble{
  width:70px;height:70px;border-radius:50%;
@@ -192,36 +107,20 @@ h1{
  width:65px;height:82px;border-radius:50%;
  margin:8px;box-shadow:inset -7px -7px 12px #0003;
 }
-.star{
- font-size:57px;background:#fff0a8;
- border-radius:50%;padding:10px;margin:6px;
+.star{font-size:57px;background:#fff0a8;border-radius:50%;padding:10px;margin:6px}
+.letter{
+ font-size:65px;font-weight:bold;color:#6a39bd;
+ background:#fff0ad;border-radius:20px;
+ width:90px;height:90px;margin:7px;
+ box-shadow:0 5px 0 #c39840;
 }
-.shape{
- font-size:55px;background:#eee4ff;
- border-radius:18px;padding:12px;margin:5px;
-}
-.parent-info{
- background:#fff;color:#24325b;border-radius:17px;
- padding:15px;line-height:2;font-weight:bold;
-}
-#gardenArea{
- background:linear-gradient(#9ce4ff,#d8ffc1);
- border-radius:20px;padding:15px;
- width:100%;font-size:60px;color:#333;
-}
-footer{font-size:11px;color:#b9c9ff;padding:20px}
-@media(max-width:360px){
- .games{gap:7px}
- .game{font-size:11px}
- .game span{font-size:30px}
- .child{font-size:75px}
- .robot{font-size:60px}
-}
+.parentbox{background:white;color:#24325b;border-radius:17px;padding:15px;line-height:2}
+footer{text-align:center;font-size:11px;padding:20px;color:#b9c9ff}
 </style>
 </head>
+
 <body>
 <div id="app">
-<div class="stars-bg"></div>
 <div class="page">
 
 <header>
@@ -233,25 +132,12 @@ footer{font-size:11px;color:#b9c9ff;padding:20px}
 
 <section id="home">
  <div class="hero">
-  <div class="planet">🪐</div>
-  <div class="rocket">🚀</div>
-  <div class="castle">🏰</div>
-  <div class="world">
-   <div class="robot">🤖</div>
-   <div class="child">🧒</div>
-  </div>
-  <div class="title-logo">👑 مغامرات<br>
-   <span class="logo-blue">العباقرة 3D</span>
-  </div>
-  <p class="hero-text">⭐ العب بالذكاء .. وتعلم بمتعة ⭐</p>
+  <div class="world">🤖 🧒 🏰 🚀</div>
+  <div class="title">👑 مغامرات<br><span>العباقرة 3D</span></div>
+  <p>⭐ العب بالذكاء .. وتعلم بمتعة ⭐</p>
  </div>
 
- <div class="quick">
-  <button onclick="openParents()" aria-label="الإعدادات">⚙️</button>
-  <button onclick="toggleSound()" aria-label="الصوت" id="soundIcon">🔊</button>
- </div>
-
- <div class="section-title">🌈 اختر مغامرتك المفضلة</div>
+ <div class="section">🌈 اختر مغامرتك</div>
  <div class="games">
   <button class="game g1" onclick="startGame('bubbles')"><span>🫧</span>فقاعات المرح</button>
   <button class="game g2" onclick="startGame('animals')"><span>🐥</span>أين الحيوان؟</button>
@@ -261,43 +147,43 @@ footer{font-size:11px;color:#b9c9ff;padding:20px}
   <button class="game g6" onclick="startGame('shapes')"><span>🔺</span>تعلم الأشكال</button>
   <button class="game g7" onclick="startGame('sounds')"><span>🐘</span>أصوات الحيوانات</button>
   <button class="game g8" onclick="startGame('garden')"><span>🌳</span>ازرع حديقتك</button>
+  <button class="game g9" onclick="startGame('letters')"><span>🔤</span>تعلم الحروف</button>
  </div>
 
- <div class="bottom-actions">
-  <button class="side-btn" onclick="openParents()">👨‍👩‍👧 لوحة الأهل</button>
-  <button class="gold-btn" onclick="startGame('bubbles')">▶ ابدأ اللعب</button>
-  <button class="side-btn" onclick="resetProgress()">↻ إعادة التقدم</button>
+ <div class="bottom">
+  <button class="action purple" onclick="openParents()">👨‍👩‍👧 الأهل</button>
+  <button class="action" onclick="startGame('bubbles')">▶ ابدأ اللعب</button>
+  <button class="action back" onclick="resetProgress()">↻ تصفير</button>
  </div>
 </section>
 
 <section id="gameScreen">
  <div class="card">
   <h2 id="gameTitle">🎮 اللعبة</h2>
+
   <div id="playArea"></div>
   <div class="message" id="message">هيا نلعب يا بطل!</div>
-  <button class="action" onclick="startRound()">🔄 إعادة اللعبة</button>
-  <button class="action back" onclick="goHome()">🏠 الرئيسية</button>
+
+  <button class="action" onclick="repeatInstruction()">🔊 اسمع مرة ثانية</button>
+  <button class="action" onclick="startRound()">🔄 العب من جديد</button>
+  <button class="action back" onclick="goHome()">🏠 رجوع للألعاب</button>
  </div>
 </section>
 
-<section id="parentsScreen">
+<section id="parents">
  <div class="card">
   <h2>👨‍👩‍👧 لوحة الأهل</h2>
-  <div class="parent-info">
-   ⭐ مجموع النجوم: <span id="pStars">0</span><br>
-   🎮 الألعاب المكتملة: <span id="pPlayed">0</span><br>
-   🎁 الهدايا: <span id="pGifts">0</span><br>
-   🏆 المستوى: <span id="pLevel">1</span>
+  <div class="parentbox">
+   ⭐ النجوم: <b id="pStars">0</b><br>
+   🎮 الألعاب المكتملة: <b id="pPlayed">0</b><br>
+   🎁 الهدايا: <b id="pGifts">0</b>
   </div>
-  <br>
   <button class="action" onclick="toggleSound()">🔊 تشغيل / إيقاف الصوت</button>
-  <button class="action" onclick="resetProgress()">🗑️ تصفير التقدم</button>
-  <button class="action back" onclick="goHome()">🏠 الرئيسية</button>
-  <p>ننصح بجلسات لعب قصيرة ومشاركة الأهل للطفل.</p>
+  <button class="action back" onclick="goHome()">🏠 رجوع</button>
  </div>
 </section>
 
-<footer>👑 مغامرات العباقرة 3D - عالم التعلم والمرح ❤️</footer>
+<footer>❤️ عالم آمن للتعلم والمرح بإشراف الأهل</footer>
 </div>
 </div>
 
@@ -305,8 +191,42 @@ footer{font-size:11px;color:#b9c9ff;padding:20px}
 const $=id=>document.getElementById(id);
 
 let data={stars:0,played:0,gifts:0,sound:true};
-let current='',won=false,gameScore=0;
-let audio=null;
+let current='',won=false;
+let instruction='';
+let letterIndex=0;
+let roundNumber=0;
+let voiceTimer=null;
+
+const letters=[
+ ['أ','أَ','أسد'],['ب','بَ','بطة'],['ت','تَ','تفاحة'],
+ ['ث','ثَ','ثعلب'],['ج','جَ','جمل'],['ح','حَ','حصان'],
+ ['خ','خَ','خروف'],['د','دَ','دب'],['ذ','ذَ','ذرة'],
+ ['ر','رَ','رمان'],['ز','زَ','زهرة'],['س','سَ','سمكة'],
+ ['ش','شَ','شمس'],['ص','صَ','صقر'],['ض','ضَ','ضفدع'],
+ ['ط','طَ','طائرة'],['ظ','ظَ','ظرف'],['ع','عَ','عنب'],
+ ['غ','غَ','غزال'],['ف','فَ','فيل'],['ق','قَ','قمر'],
+ ['ك','كَ','كتاب'],['ل','لَ','ليمون'],['م','مَ','موز'],
+ ['ن','نَ','نحلة'],['هـ','هَ','هلال'],['و','وَ','وردة'],
+ ['ي','يَ','يد']
+];
+
+const animals=[
+ {e:'🐱',n:'القطة',s:'مياو مياو'},
+ {e:'🐶',n:'الكلب',s:'هو هو'},
+ {e:'🐮',n:'البقرة',s:'مووو'},
+ {e:'🐥',n:'العصفور',s:'تغريد'},
+ {e:'🐑',n:'الخروف',s:'ماااع'},
+ {e:'🐘',n:'الفيل',s:'الفيل الكبير'}
+];
+
+const colors=[
+ {n:'الأحمر',c:'#ff3434'},
+ {n:'الأزرق',c:'#2588ff'},
+ {n:'الأصفر',c:'#ffdf25'},
+ {n:'الأخضر',c:'#38c75d'}
+];
+
+let audioContext=null;
 
 function load(){
  try{
@@ -315,10 +235,12 @@ function load(){
  }catch(e){}
  update();
 }
+
 function save(){
  try{localStorage.setItem('genius3d',JSON.stringify(data))}
  catch(e){}
 }
+
 function update(){
  $('stars').textContent=data.stars;
  $('level').textContent=Math.floor(data.stars/10)+1;
@@ -327,64 +249,99 @@ function update(){
  $('pStars').textContent=data.stars;
  $('pPlayed').textContent=data.played;
  $('pGifts').textContent=data.gifts;
- $('pLevel').textContent=Math.floor(data.stars/10)+1;
- $('soundIcon').textContent=data.sound?'🔊':'🔇';
 }
-function sound(f=650){
+
+function speak(text){
+ if(!data.sound)return;
+ if(!('speechSynthesis' in window)){
+  $('message').textContent='الصوت غير مدعوم في هذا الهاتف';
+  return;
+ }
+ speechSynthesis.cancel();
+ clearTimeout(voiceTimer);
+
+ const msg=new SpeechSynthesisUtterance(text);
+ msg.lang='ar-SA';
+ msg.rate=.78;
+ msg.pitch=1.15;
+ msg.volume=1;
+
+ let voices=speechSynthesis.getVoices();
+ let arabic=voices.find(v=>v.lang.toLowerCase().startsWith('ar'));
+ if(arabic)msg.voice=arabic;
+
+ speechSynthesis.speak(msg);
+}
+
+function beep(freq=650){
  if(!data.sound)return;
  try{
-  audio=audio||new(window.AudioContext||window.webkitAudioContext)();
-  if(audio.state==='suspended')audio.resume();
-  const o=audio.createOscillator();
-  const g=audio.createGain();
-  o.frequency.value=f;
-  o.connect(g);g.connect(audio.destination);
-  g.gain.setValueAtTime(.1,audio.currentTime);
-  g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.2);
-  o.start();o.stop(audio.currentTime+.2);
+  audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();
+  if(audioContext.state==='suspended')audioContext.resume();
+  let o=audioContext.createOscillator();
+  let g=audioContext.createGain();
+  o.frequency.value=freq;
+  o.connect(g);g.connect(audioContext.destination);
+  g.gain.setValueAtTime(.1,audioContext.currentTime);
+  g.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+.2);
+  o.start();o.stop(audioContext.currentTime+.2);
  }catch(e){}
 }
-function speak(t){
- if(!data.sound||!window.speechSynthesis)return;
- speechSynthesis.cancel();
- const s=new SpeechSynthesisUtterance(t);
- s.lang='ar-SA';s.rate=.8;
- speechSynthesis.speak(s);
+
+function say(text){
+ $('message').textContent=text;
+ speak(text);
+ beep(850);
 }
-function say(t){
- $('message').textContent=t;
- speak(t);sound(850);
-}
-function addStar(){
+
+function correct(){
+ if(won)return;
+ won=true;
  data.stars++;
- // هدية مجانية كل خمس نجوم
+ data.played++;
+
  if(data.stars%5===0){
   data.gifts++;
-  $('message').textContent='🎁 حصلت على هدية جديدة!';
-  speak('مبروك حصلت على هدية');
+  $('message').textContent='🎁 أحسنت يا بطل! حصلت على هدية!';
+  speak('أحسنت يا بطل! حصلت على هدية جميلة!');
  }else{
-  say('👏 أحسنت يا بطل!');
+  say('أحسنت يا بطل! ممتاز! هذه إجابة صحيحة!');
  }
  update();save();
 }
-function complete(){
- if(won)return;
- won=true;
- data.played++;
- addStar();
- update();save();
+
+function wrong(){
+ $('message').textContent='حاول مرة ثانية يا صديقي!';
+ speak('حاول مرة ثانية يا صديقي! أنت تستطيع!');
+ beep(250);
 }
+
+const instructions={
+ bubbles:'المس خمس فقاعات يا بطل. اضغط على الفقاعات الجميلة!',
+ animals:'استمع جيداً! ابحث عن الحيوان الذي أطلبه منك!',
+ colors:'هيا نتعلم الألوان! المس اللون الذي تسمعه!',
+ stars:'اجمع خمس نجوم يا صديقي. المس النجوم الجميلة!',
+ balloons:'المس خمس بالونات ملونة يا بطل!',
+ shapes:'هيا نتعلم الأشكال! ابحث عن الشكل الصحيح!',
+ sounds:'المس الحيوان واستمع إلى صوته الجميل!',
+ garden:'المس النبتة عدة مرات حتى تصبح شجرة جميلة!',
+ letters:'هيا نتعلم الحروف العربية! استمع إلى الحرف ثم اختره!'
+};
+
 function startGame(type){
- current=type;won=false;
+ current=type;
  $('home').style.display='none';
- $('parentsScreen').style.display='none';
+ $('parents').style.display='none';
  $('gameScreen').style.display='block';
+ letterIndex=0;
  startRound();
 }
+
 function startRound(){
- won=false;gameScore=0;
- $('message').textContent='هيا نلعب يا صديقي ❤️';
- const a=$('playArea');a.innerHTML='';
+ won=false;
+ roundNumber++;
+ $('message').textContent='استمع إلى التعليمات يا بطل!';
+ $('playArea').innerHTML='';
  const names={
  bubbles:'🫧 فقاعات المرح',
  animals:'🐥 أين الحيوان؟',
@@ -393,9 +350,12 @@ function startRound(){
  balloons:'🎈 بالونات المرح',
  shapes:'🔺 تعلم الأشكال',
  sounds:'🐘 أصوات الحيوانات',
- garden:'🌳 ازرع حديقتك'
+ garden:'🌳 ازرع حديقتك',
+ letters:'🔤 تعلم الحروف العربية'
  };
  $('gameTitle').textContent=names[current];
+
+ instruction=instructions[current];
  const games={
  bubbles:bubblesGame,
  animals:animalsGame,
@@ -404,96 +364,112 @@ function startRound(){
  balloons:balloonsGame,
  shapes:shapesGame,
  sounds:soundsGame,
- garden:gardenGame
+ garden:gardenGame,
+ letters:lettersGame
  };
- if(games[current])games[current](a);
+ if(games[current])games[current]();
+
+ // تأخير بسيط حتى يستقر عرض اللعبة قبل نطق التعليمات
+ setTimeout(()=>speak(instruction),350);
 }
 
-function makeButton(text,cls,fn){
- const b=document.createElement('button');
- b.className=cls;b.textContent=text;b.onclick=fn;
+function repeatInstruction(){
+ if(current==='letters'){
+  speak(letterPrompt);
+ }else{
+  speak(instruction);
+ }
+}
+
+function button(text,cls,fn){
+ let b=document.createElement('button');
+ b.className=cls;
+ b.textContent=text;
+ b.onclick=fn;
  return b;
 }
-function bubblesGame(a){
- a.innerHTML='<div class="target">المس خمس فقاعات 🫧</div>';
- let n=0;
+
+function bubblesGame(){
+ let a=$('playArea'),n=0;
+ a.innerHTML='<div class="target">🫧 🫧 🫧</div>';
  for(let i=0;i<8;i++){
-  let b=makeButton('🫧','bubble',()=>{
+  let b=button('🫧','bubble',()=>{
    if(b.dataset.hit)return;
-   b.dataset.hit='1';b.textContent='✨';
-   n++;sound(600+n*50);
-   if(n===5)complete();
+   b.dataset.hit='1';
+   b.textContent='✨';
+   n++;
+   beep(650+n*40);
+   if(n===5)correct();
   });
   a.appendChild(b);
  }
 }
-const animals=[
- {e:'🐱',n:'القطة',s:'مياو مياو'},
- {e:'🐶',n:'الكلب',s:'هو هو'},
- {e:'🐮',n:'البقرة',s:'مووو'},
- {e:'🐥',n:'العصفور',s:'تغريد'},
- {e:'🐑',n:'الخروف',s:'ماااع'},
- {e:'🐘',n:'الفيل',s:'الفيل'}
-];
-function animalsGame(a){
+
+function animalsGame(){
+ let a=$('playArea');
  let target=animals[Math.floor(Math.random()*animals.length)];
- a.innerHTML='<div class="target">أين '+target.n+'؟</div>';
  let list=[target,...animals.filter(x=>x!==target).sort(()=>Math.random()-.5).slice(0,2)];
  list.sort(()=>Math.random()-.5);
+ $('message').textContent='أين '+target.n+'؟';
+ instruction='أين '+target.n+'؟ المس صورة '+target.n;
  list.forEach(x=>{
-  a.appendChild(makeButton(x.e,'choice',()=>{
+  a.appendChild(button(x.e,'choice',()=>{
    if(won)return;
-   if(x===target){complete();speak(x.s)}
-   else say('حاول مرة ثانية ❤️');
+   if(x===target){
+    correct();
+    setTimeout(()=>speak(x.n+'، '+x.s),900);
+   }else wrong();
   }));
  });
 }
-const colors=[
- {n:'الأحمر',c:'#ff3434'},
- {n:'الأزرق',c:'#2588ff'},
- {n:'الأصفر',c:'#ffdf25'},
- {n:'الأخضر',c:'#38c75d'}
-];
-function colorsGame(a){
+
+function colorsGame(){
+ let a=$('playArea');
  let target=colors[Math.floor(Math.random()*colors.length)];
- a.innerHTML='<div class="target">أين اللون '+target.n+'؟</div>';
+ $('message').textContent='أين اللون '+target.n+'؟';
+ instruction='أين اللون '+target.n+'؟ المس اللون الصحيح';
  colors.forEach(x=>{
-  let b=makeButton('','choice',()=>{
+  let b=button('','choice',()=>{
    if(won)return;
-   if(x===target){complete();speak(x.n)}
-   else say('حاول مرة أخرى 🌈');
+   if(x===target)correct();
+   else wrong();
   });
-  b.style.background=x.c;a.appendChild(b);
+  b.style.background=x.c;
+  a.appendChild(b);
  });
 }
-function starsGame(a){
- a.innerHTML='<div class="target">اجمع خمس نجوم ⭐</div>';
- let n=0;
- for(let i=0;i<5;i++){
-  let b=makeButton('⭐','star',()=>{
+
+function starsGame(){
+ let a=$('playArea'),n=0;
+ for(let i=0;i<7;i++){
+  a.appendChild(button('⭐','star',function(){
+   if(this.dataset.hit)return;
+   this.dataset.hit='1';
+   this.style.visibility='hidden';
+   n++;beep(700+n*40);
+   if(n===5)correct();
+  }));
+ }
+}
+
+function balloonsGame(){
+ let a=$('playArea'),n=0;
+ const palette=['#ff6ca8','#4ebdff','#ffdb4c','#6cda88'];
+ for(let i=0;i<7;i++){
+  let b=button('','balloon',()=>{
    if(b.dataset.hit)return;
-   b.dataset.hit='1';b.style.visibility='hidden';
-   n++;sound(700+n*50);
-   if(n===5)complete();
+   b.dataset.hit='1';
+   b.style.visibility='hidden';
+   n++;beep(500+n*60);
+   if(n===5)correct();
   });
+  b.style.background=palette[i%4];
   a.appendChild(b);
  }
 }
-function balloonsGame(a){
- a.innerHTML='<div class="target">المس خمس بالونات 🎈</div>';
- let n=0;
- const palette=['#ff6ca8','#4ebdff','#ffdb4c','#6cda88'];
- for(let i=0;i<7;i++){
-  let b=makeButton('','balloon',()=>{
-   if(b.dataset.hit)return;
-   b.dataset.hit='1';b.style.visibility='hidden';
-   n++;sound(500+n*60);
-   if(n===5)complete();
-  });
-  b.style.background=palette[i%4];a.appendChild(b);
- }
-}
-function shapesGame(a){
+
+function shapesGame(){
+ let a=$('playArea');
  let shapes=[
   {e:'🔴',n:'الدائرة'},
   {e:'🟦',n:'المربع'},
@@ -501,62 +477,105 @@ function shapesGame(a){
   {e:'❤️',n:'القلب'}
  ];
  let target=shapes[Math.floor(Math.random()*shapes.length)];
- a.innerHTML='<div class="target">أين '+target.n+'؟</div>';
+ $('message').textContent='أين '+target.n+'؟';
+ instruction='أين '+target.n+'؟ اختر الشكل الصحيح';
  shapes.sort(()=>Math.random()-.5).forEach(x=>{
-  a.appendChild(makeButton(x.e,'choice',()=>{
+  a.appendChild(button(x.e,'choice',()=>{
    if(won)return;
-   if(x===target){complete();speak(x.n)}
-   else say('حاول مرة ثانية ❤️');
+   if(x===target)correct();
+   else wrong();
   }));
  });
 }
-function soundsGame(a){
+
+function soundsGame(){
+ let a=$('playArea');
  let x=animals[Math.floor(Math.random()*animals.length)];
- a.innerHTML='<div class="target">المس الحيوان واستمع لصوته</div>';
- a.appendChild(makeButton(x.e,'choice',()=>{
+ $('message').textContent='المس الحيوان!';
+ a.appendChild(button(x.e,'choice',()=>{
   if(won)return;
-  speak(x.s);
+  speak(x.n+'، '+x.s);
   $('message').textContent=x.n+' '+x.s;
-  complete();
+  correct();
  }));
+ instruction='المس صورة الحيوان واستمع إلى صوته!';
 }
-function gardenGame(a){
- a.innerHTML='<div class="target">المس النبتة حتى تكبر 🌱</div>';
- let count=0;
- let b=makeButton('🌱','choice',()=>{
+
+function gardenGame(){
+ let a=$('playArea'),count=0;
+ let b=button('🌱','choice',()=>{
   if(won)return;
   count++;
-  const growth=['🌿','🌷','🌻','🌳🦋'];
-  b.textContent=growth[Math.min(count-1,3)];
-  sound(600+count*80);
-  if(count===4)complete();
-  else $('message').textContent='رائع! النبتة تكبر 🌱';
+  b.textContent=['🌿','🌷','🌻','🌳🦋'][Math.min(count-1,3)];
+  beep(600+count*80);
+  if(count===4)correct();
+  else{
+   $('message').textContent='رائع! النبتة تكبر!';
+   speak('رائع! النبتة تكبر!');
+  }
  });
  b.style.width='180px';b.style.height='150px';
  a.appendChild(b);
 }
+
+let letterPrompt='';
+
+function lettersGame(){
+ let a=$('playArea');
+ let item=letters[letterIndex%letters.length];
+ letterPrompt='أين حرف '+item[0]+'؟ حرف '+item[0]+' مثل '+item[2];
+ $('message').textContent='استمع واختر الحرف الصحيح';
+ instruction=letterPrompt;
+
+ let options=[item];
+ while(options.length<3){
+  let other=letters[Math.floor(Math.random()*letters.length)];
+  if(!options.includes(other))options.push(other);
+ }
+ options.sort(()=>Math.random()-.5);
+
+ options.forEach(x=>{
+  a.appendChild(button(x[0],'letter',()=>{
+   if(won)return;
+   if(x===item){
+    correct();
+    speak('أحسنت! هذا حرف '+item[0]+' مثل '+item[2]);
+    letterIndex++;
+    let next=button('حرف آخر ➡️','action',()=>{
+     startRound();
+    });
+    a.appendChild(next);
+   }else wrong();
+  }));
+ });
+}
+
+function goHome(){
+ if('speechSynthesis'in window)speechSynthesis.cancel();
+ $('home').style.display='block';
+ $('gameScreen').style.display='none';
+ $('parents').style.display='none';
+}
+
 function openParents(){
  $('home').style.display='none';
  $('gameScreen').style.display='none';
- $('parentsScreen').style.display='block';
+ $('parents').style.display='block';
  update();
 }
-function goHome(){
- $('home').style.display='block';
- $('gameScreen').style.display='none';
- $('parentsScreen').style.display='none';
- update();
-}
+
 function toggleSound(){
  data.sound=!data.sound;
- if(!data.sound&&window.speechSynthesis)speechSynthesis.cancel();
+ if(!data.sound&&'speechSynthesis'in window)speechSynthesis.cancel();
  save();update();
 }
+
 function resetProgress(){
- if(!confirm('هل تريد حذف كل النجوم والهدايا والتقدم؟'))return;
+ if(!confirm('هل تريد حذف كل النجوم والهدايا؟'))return;
  data.stars=0;data.played=0;data.gifts=0;
  save();update();
 }
+
 load();
 </script>
 </body>
