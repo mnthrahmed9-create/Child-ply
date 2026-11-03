@@ -4,487 +4,558 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#8bdcff">
+<meta name="theme-color" content="#071333">
 <title>مغامرات العباقرة 3D</title>
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;font-family:Tahoma,Arial;
- background:linear-gradient(140deg,#8be5ff,#c5b5ff,#ffd5e9);
- color:#34436e;text-align:center;min-height:100vh;
- overflow-x:hidden
+ margin:0;font-family:Tahoma,Arial,sans-serif;
+ color:white;background:#07132f;
+ min-height:100vh;overflow-x:hidden;
 }
 button{font-family:inherit;cursor:pointer;border:0}
+button:active{transform:scale(.94)}
+#app{
+ min-height:100vh;
+ background:
+ radial-gradient(ellipse at 50% 25%,#344b9a 0%,transparent 50%),
+ linear-gradient(180deg,#07102e,#182b68 55%,#09132d);
+ position:relative;overflow:hidden;
+}
+.stars-bg{
+ position:fixed;inset:0;pointer-events:none;
+ background-image:
+ radial-gradient(2px 2px at 10% 15%,white,transparent),
+ radial-gradient(2px 2px at 70% 20%,#ffe78a,transparent),
+ radial-gradient(2px 2px at 90% 50%,white,transparent),
+ radial-gradient(2px 2px at 30% 70%,white,transparent),
+ radial-gradient(2px 2px at 55% 90%,#ffe78a,transparent);
+ background-size:190px 190px;
+ opacity:.7;z-index:0;
+}
+.page{
+ position:relative;z-index:1;
+ width:100%;max-width:650px;
+ margin:auto;padding:12px;
+}
 header{
- display:flex;justify-content:space-around;gap:5px;
- background:#ffffffeb;padding:14px 5px;
- border-radius:0 0 25px 25px;
- box-shadow:0 5px 15px #4442;
- position:sticky;top:0;z-index:10;
+ display:flex;justify-content:space-around;align-items:center;
+ background:linear-gradient(135deg,#142b63,#07142e);
+ border:2px solid #e6bd5d;
+ border-radius:17px;padding:9px 4px;
+ box-shadow:0 0 15px #ffcd5b55;
 }
-.stat{font-size:13px;font-weight:bold}
-.stat b{color:#7345ce;font-size:16px}
-.container{max-width:650px;margin:auto;padding:12px}
-h1{font-size:27px;color:#663ab7;text-shadow:2px 3px white}
-.subtitle{font-size:14px}
-.panel{
- background:#ffffffdf;border-radius:28px;padding:17px;
- margin:14px 0;box-shadow:0 8px 0 #7561b833,0 12px 20px #4442;
+.stat{font-size:12px;text-align:center;font-weight:bold}
+.stat b{display:block;color:#ffdb64;font-size:17px;margin-top:4px}
+h1{
+ font-size:clamp(27px,7vw,39px);
+ margin:17px 0 5px;
+ color:#ffdc64;
+ text-shadow:0 3px 0 #9c4c00,0 0 15px #ffd84d;
 }
-.mascot{
- font-size:85px;display:inline-block;
- animation:bounce 2s infinite ease-in-out;
- filter:drop-shadow(0 8px 5px #5554);
+.subtitle{font-size:14px;color:#fff0ae}
+.hero{
+ position:relative;margin-top:15px;
+ padding:16px 10px 20px;
+ border:2px solid #f6cf62;
+ border-radius:25px;
+ background:
+ radial-gradient(ellipse at 50% 100%,#236ed1,#17265a 60%,#101a40);
+ box-shadow:0 0 22px #48aaff55,inset 0 0 20px #fff2;
+ overflow:hidden;
 }
-@keyframes bounce{50%{transform:translateY(-12px) rotate(5deg)}}
-.speech{
- background:#fff5b7;border-radius:20px;
- padding:12px;margin:10px auto;font-weight:bold;
- max-width:300px;color:#7553a0
+.hero:before{
+ content:"";position:absolute;inset:0;
+ background:radial-gradient(circle at 15% 25%,#ffe37c66,transparent 25%),
+ radial-gradient(circle at 85% 30%,#65dfff66,transparent 25%);
+ pointer-events:none;
+}
+.world{
+ position:relative;z-index:1;
+ display:flex;align-items:center;justify-content:center;
+ gap:3px;min-height:145px;
+}
+.child{font-size:95px;filter:drop-shadow(0 7px 7px #0008)}
+.robot{font-size:75px;filter:drop-shadow(0 7px 7px #0008)}
+.planet{position:absolute;font-size:39px;top:3px;right:10px}
+.rocket{position:absolute;font-size:35px;left:10px;top:8px}
+.castle{position:absolute;font-size:52px;bottom:0;left:8px;opacity:.85}
+.title-logo{
+ position:relative;z-index:1;
+ font-size:27px;font-weight:1000;
+ color:#ffe36e;text-shadow:0 3px 0 #813d08,0 0 12px #ffc83e;
+}
+.logo-blue{color:#50d9ff;font-size:33px}
+.hero-text{
+ position:relative;z-index:1;
+ background:linear-gradient(90deg,#9c6200,#ffe77a,#a65a00);
+ color:#311600;border-radius:15px;
+ display:inline-block;padding:7px 17px;
+ font-weight:bold;font-size:13px;
+ box-shadow:0 3px 0 #6e3900;
+}
+.quick{
+ display:flex;justify-content:center;gap:9px;
+ margin:16px 0 12px;
+}
+.quick button{
+ width:48px;height:43px;border-radius:14px;
+ background:linear-gradient(145deg,#fff,#bac7e6);
+ color:#14234e;font-size:20px;
+ box-shadow:0 4px 0 #52628b;
+}
+.section-title{
+ font-size:18px;color:#ffe17a;margin:17px 0 12px;
 }
 .games{
- display:grid;grid-template-columns:1fr 1fr;gap:12px
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:10px;
 }
 .game{
- min-height:125px;border-radius:23px;
- font-size:16px;font-weight:bold;color:#39456c;
- box-shadow:0 7px 0 #0002;
- transition:.15s;touch-action:manipulation
+ min-height:95px;border-radius:18px;
+ border:2px solid #ffffff99;
+ box-shadow:0 5px 0 #0006,inset 0 2px 5px #fff8;
+ color:white;font-weight:bold;font-size:13px;
+ text-shadow:0 2px 3px #0008;
 }
-.game:active{transform:scale(.94)}
-.game span{display:block;font-size:47px;margin-bottom:8px}
-.g1{background:#ffdaeb}
-.g2{background:#d5f7b7}
-.g3{background:#fff0a0}
-.g4{background:#c6e9ff}
-.g5{background:#e7d5ff}
-.g6{background:#ffd8a8}
-.g7{background:#c5f6e8}
-.g8{background:#ffe0e0}
-.action{
- padding:13px 22px;border-radius:18px;
- font-size:16px;font-weight:bold;
- background:#7148d4;color:white;
- box-shadow:0 5px 0 #493095;
- margin:5px
+.game span{display:block;font-size:35px;margin-bottom:6px}
+.g1{background:linear-gradient(145deg,#a83cff,#5014a9)}
+.g2{background:linear-gradient(145deg,#74e45b,#087c3d)}
+.g3{background:linear-gradient(145deg,#29baff,#064cb4)}
+.g4{background:linear-gradient(145deg,#ff62bd,#a6006e)}
+.g5{background:linear-gradient(145deg,#ffae35,#b74b00)}
+.g6{background:linear-gradient(145deg,#35e5c1,#047b72)}
+.g7{background:linear-gradient(145deg,#ffda59,#aa6500)}
+.g8{background:linear-gradient(145deg,#ff827c,#a92943)}
+.bottom-actions{
+ display:grid;grid-template-columns:1fr 1.5fr 1fr;
+ align-items:center;gap:7px;margin-top:20px;
 }
-.light{background:#e8e1ff;color:#563d9b}
-#gameScreen,#parentScreen{display:none}
+.gold-btn{
+ background:linear-gradient(180deg,#fff18c,#ffb900,#e87800);
+ border:3px solid #fff0a0;color:#351900;
+ border-radius:25px;padding:13px 5px;
+ font-size:17px;font-weight:1000;
+ box-shadow:0 5px 0 #854200,0 0 13px #ffcb40;
+}
+.side-btn{
+ background:linear-gradient(145deg,#a54bff,#4612a1);
+ color:white;border:2px solid #e7c8ff;
+ border-radius:17px;padding:10px 4px;
+ font-size:12px;font-weight:bold;
+ box-shadow:0 4px 0 #28075e;
+}
+#gameScreen,#parentsScreen{display:none}
+.card{
+ background:linear-gradient(145deg,#192f68,#101a40);
+ border:2px solid #f2cf66;
+ border-radius:25px;padding:17px;
+ margin-top:20px;
+ box-shadow:0 0 18px #3d9dff44;
+}
+#gameTitle{color:#ffdf76;font-size:23px}
 #playArea{
- min-height:350px;background:linear-gradient(#f5fbff,#fff);
- border-radius:25px;padding:15px;
- display:flex;align-items:center;justify-content:center;
- flex-direction:column;overflow:hidden;position:relative;
+ min-height:330px;background:linear-gradient(145deg,#e8f7ff,#fff);
+ border-radius:20px;color:#25345b;
+ padding:15px;display:flex;
+ flex-wrap:wrap;align-items:center;
+ justify-content:center;align-content:center;
+ overflow:hidden;position:relative;
 }
-.target{font-size:23px;font-weight:bold;color:#6741b7;margin:10px}
-.message{font-size:19px;font-weight:bold;min-height:32px;color:#6741b7;margin:8px}
-.choices{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:15px}
+.target{
+ width:100%;font-size:21px;font-weight:bold;
+ color:#5637a2;margin:8px;
+}
+.message{
+ color:#ffe17c;font-size:18px;
+ font-weight:bold;min-height:32px;margin:12px;
+}
+.action{
+ border-radius:17px;padding:12px 17px;
+ font-size:15px;font-weight:bold;margin:5px;
+ background:linear-gradient(145deg,#ffe98b,#f3a700);
+ color:#362000;box-shadow:0 4px 0 #995300;
+}
+.back{background:linear-gradient(145deg,#b9caff,#586eb8);color:white}
 .choice{
- width:90px;height:90px;border-radius:23px;
- background:#e8f5ff;font-size:53px;
- box-shadow:0 6px 0 #0002
+ width:85px;height:85px;border-radius:20px;
+ background:#e4f0ff;font-size:49px;
+ box-shadow:0 5px 0 #8b9cba;margin:6px;
 }
-.colorChoice{width:85px;height:85px;border-radius:22px;box-shadow:0 5px 0 #0002}
 .bubble{
- width:75px;height:75px;border-radius:50%;
- background:radial-gradient(circle at 30% 25%,white,#b8eaff 45%,#66aaff);
- box-shadow:inset -7px -8px 15px #4887b955,0 5px 10px #5553;
- font-size:34px;margin:8px;cursor:pointer;
- animation:float 2s infinite alternate
-}
-@keyframes float{to{transform:translateY(-10px)}}
-.star{
- font-size:60px;background:#fff1a8;border-radius:50%;
- padding:10px;margin:5px
+ width:70px;height:70px;border-radius:50%;
+ margin:8px;font-size:30px;
+ background:radial-gradient(circle at 30% 25%,white,#7bdcff,#2581e8);
+ box-shadow:inset -5px -6px 12px #1456a477,0 4px 7px #888;
 }
 .balloon{
- width:75px;height:95px;border-radius:50% 50% 45% 45%;
- margin:8px;box-shadow:inset -8px -8px 15px #0002;
- animation:float 2s infinite alternate
+ width:65px;height:82px;border-radius:50%;
+ margin:8px;box-shadow:inset -7px -7px 12px #0003;
+}
+.star{
+ font-size:57px;background:#fff0a8;
+ border-radius:50%;padding:10px;margin:6px;
 }
 .shape{
- width:90px;height:90px;margin:10px;
- display:inline-flex;align-items:center;justify-content:center;
- font-size:55px;background:#f2eaff;border-radius:20px
+ font-size:55px;background:#eee4ff;
+ border-radius:18px;padding:12px;margin:5px;
 }
-.animal{font-size:80px}
-#garden{
- min-height:120px;background:linear-gradient(#d9f7ff,#d8ffc8);
- border-radius:20px;padding:10px;font-size:55px
+.parent-info{
+ background:#fff;color:#24325b;border-radius:17px;
+ padding:15px;line-height:2;font-weight:bold;
 }
-#rewardBox{font-size:65px;cursor:pointer}
-footer{padding:20px;font-size:12px}
-.hidden{display:none!important}
+#gardenArea{
+ background:linear-gradient(#9ce4ff,#d8ffc1);
+ border-radius:20px;padding:15px;
+ width:100%;font-size:60px;color:#333;
+}
+footer{font-size:11px;color:#b9c9ff;padding:20px}
+@media(max-width:360px){
+ .games{gap:7px}
+ .game{font-size:11px}
+ .game span{font-size:30px}
+ .child{font-size:75px}
+ .robot{font-size:60px}
+}
 </style>
 </head>
 <body>
+<div id="app">
+<div class="stars-bg"></div>
+<div class="page">
 
 <header>
- <div class="stat">⭐ النجوم<br><b id="stars">0</b></div>
- <div class="stat">🏆 المستوى<br><b id="level">1</b></div>
- <div class="stat">🎮 الألعاب<br><b id="played">0</b></div>
- <div class="stat">🎁 الهدايا<br><b id="gifts">0</b></div>
+ <div class="stat">⭐ النجوم<b id="stars">0</b></div>
+ <div class="stat">🏆 المستوى<b id="level">1</b></div>
+ <div class="stat">🎮 الألعاب<b id="played">0</b></div>
+ <div class="stat">🎁 الهدايا<b id="gifts">0</b></div>
 </header>
 
-<div class="container">
-
 <section id="home">
- <h1>👑 مغامرات العباقرة 3D</h1>
- <div class="subtitle">العب بالذكاء .. وتعلم بمتعة</div>
-
- <div class="panel">
-  <div class="mascot" id="mascot">🐻</div>
-  <div class="speech" id="welcome">مرحباً يا صديقي الصغير! ❤️</div>
-  <button class="action" onclick="speak('أهلاً يا صديقي هيا نلعب')">🔊 اسمعني</button>
- </div>
-
- <div class="panel">
-  <h3>🌈 اختر عالمك المفضل</h3>
-  <div class="games">
-   <button class="game g1" onclick="startGame('bubbles')"><span>🫧</span>فقاعات المرح</button>
-   <button class="game g2" onclick="startGame('animals')"><span>🐥</span>أين الحيوان؟</button>
-   <button class="game g3" onclick="startGame('colors')"><span>🎨</span>تعلم الألوان</button>
-   <button class="game g4" onclick="startGame('stars')"><span>⭐</span>اجمع النجوم</button>
-   <button class="game g5" onclick="startGame('balloons')"><span>🎈</span>بالونات المرح</button>
-   <button class="game g6" onclick="startGame('shapes')"><span>🔺</span>تعلم الأشكال</button>
-   <button class="game g7" onclick="startGame('sounds')"><span>🐘</span>أصوات الحيوانات</button>
-   <button class="game g8" onclick="startGame('garden')"><span>🌱</span>ازرع حديقتك</button>
+ <div class="hero">
+  <div class="planet">🪐</div>
+  <div class="rocket">🚀</div>
+  <div class="castle">🏰</div>
+  <div class="world">
+   <div class="robot">🤖</div>
+   <div class="child">🧒</div>
   </div>
+  <div class="title-logo">👑 مغامرات<br>
+   <span class="logo-blue">العباقرة 3D</span>
+  </div>
+  <p class="hero-text">⭐ العب بالذكاء .. وتعلم بمتعة ⭐</p>
  </div>
 
- <div class="panel">
-  <h3>🎁 صندوق المفاجآت</h3>
-  <div id="rewardBox" onclick="openGift()">🎁</div>
-  <p id="giftText">اجمع 5 نجوم لتحصل على هدية!</p>
+ <div class="quick">
+  <button onclick="openParents()" aria-label="الإعدادات">⚙️</button>
+  <button onclick="toggleSound()" aria-label="الصوت" id="soundIcon">🔊</button>
  </div>
 
- <div id="garden" class="panel">
-  🌱 🌷 🌳 🦋 🌼
-  <div style="font-size:14px">حديقة الأصدقاء</div>
+ <div class="section-title">🌈 اختر مغامرتك المفضلة</div>
+ <div class="games">
+  <button class="game g1" onclick="startGame('bubbles')"><span>🫧</span>فقاعات المرح</button>
+  <button class="game g2" onclick="startGame('animals')"><span>🐥</span>أين الحيوان؟</button>
+  <button class="game g3" onclick="startGame('colors')"><span>🎨</span>تعلم الألوان</button>
+  <button class="game g4" onclick="startGame('stars')"><span>⭐</span>اجمع النجوم</button>
+  <button class="game g5" onclick="startGame('balloons')"><span>🎈</span>بالونات المرح</button>
+  <button class="game g6" onclick="startGame('shapes')"><span>🔺</span>تعلم الأشكال</button>
+  <button class="game g7" onclick="startGame('sounds')"><span>🐘</span>أصوات الحيوانات</button>
+  <button class="game g8" onclick="startGame('garden')"><span>🌳</span>ازرع حديقتك</button>
  </div>
 
- <div class="panel">
-  <button class="action light" onclick="openParents()">👨‍👩‍👧 لوحة الأهل</button>
+ <div class="bottom-actions">
+  <button class="side-btn" onclick="openParents()">👨‍👩‍👧 لوحة الأهل</button>
+  <button class="gold-btn" onclick="startGame('bubbles')">▶ ابدأ اللعب</button>
+  <button class="side-btn" onclick="resetProgress()">↻ إعادة التقدم</button>
  </div>
 </section>
 
 <section id="gameScreen">
- <div class="panel">
-  <h2 id="gameTitle">اللعبة</h2>
+ <div class="card">
+  <h2 id="gameTitle">🎮 اللعبة</h2>
   <div id="playArea"></div>
-  <div class="message" id="message">هيا نلعب! ❤️</div>
-  <button class="action" onclick="startRound()">🔄 مرة أخرى</button>
-  <button class="action light" onclick="goHome()">🏠 الرئيسية</button>
+  <div class="message" id="message">هيا نلعب يا بطل!</div>
+  <button class="action" onclick="startRound()">🔄 إعادة اللعبة</button>
+  <button class="action back" onclick="goHome()">🏠 الرئيسية</button>
  </div>
 </section>
 
-<section id="parentScreen">
- <div class="panel">
+<section id="parentsScreen">
+ <div class="card">
   <h2>👨‍👩‍👧 لوحة الأهل</h2>
-  <div style="font-size:18px;line-height:2">
-   ⭐ مجموع النجوم: <b id="parentStars">0</b><br>
-   🎮 الألعاب المكتملة: <b id="parentPlayed">0</b><br>
-   🎁 الهدايا: <b id="parentGifts">0</b>
+  <div class="parent-info">
+   ⭐ مجموع النجوم: <span id="pStars">0</span><br>
+   🎮 الألعاب المكتملة: <span id="pPlayed">0</span><br>
+   🎁 الهدايا: <span id="pGifts">0</span><br>
+   🏆 المستوى: <span id="pLevel">1</span>
   </div>
-  <hr>
-  <button class="action" onclick="toggleSound()" id="soundButton">🔊 الصوت يعمل</button>
-  <button class="action light" onclick="resetProgress()">🗑️ تصفير التقدم</button>
-  <button class="action light" onclick="goHome()">🏠 رجوع</button>
-  <p style="font-size:13px">نوصي بمشاركة الطفل أثناء اللعب واستخدام جلسات قصيرة.</p>
+  <br>
+  <button class="action" onclick="toggleSound()">🔊 تشغيل / إيقاف الصوت</button>
+  <button class="action" onclick="resetProgress()">🗑️ تصفير التقدم</button>
+  <button class="action back" onclick="goHome()">🏠 الرئيسية</button>
+  <p>ننصح بجلسات لعب قصيرة ومشاركة الأهل للطفل.</p>
  </div>
 </section>
 
-<footer>❤️ عالم آمن للتعلم والمرح بإشراف الأهل</footer>
+<footer>👑 مغامرات العباقرة 3D - عالم التعلم والمرح ❤️</footer>
+</div>
 </div>
 
 <script>
 const $=id=>document.getElementById(id);
+
 let data={stars:0,played:0,gifts:0,sound:true};
-let current='',round=0,won=false,giftReady=false;
-let audioContext=null;
+let current='',won=false,gameScore=0;
+let audio=null;
 
 function load(){
  try{
-  let saved=JSON.parse(localStorage.getItem('geniusKids'));
-  if(saved)data={...data,...saved};
+  const x=JSON.parse(localStorage.getItem('genius3d'));
+  if(x)data={...data,...x};
  }catch(e){}
  update();
 }
 function save(){
- try{localStorage.setItem('geniusKids',JSON.stringify(data))}catch(e){}
+ try{localStorage.setItem('genius3d',JSON.stringify(data))}
+ catch(e){}
 }
 function update(){
  $('stars').textContent=data.stars;
  $('level').textContent=Math.floor(data.stars/10)+1;
  $('played').textContent=data.played;
  $('gifts').textContent=data.gifts;
- $('parentStars').textContent=data.stars;
- $('parentPlayed').textContent=data.played;
- $('parentGifts').textContent=data.gifts;
- $('giftText').textContent=data.stars>=5?'افتح هديتك يا بطل!':'اجمع '+(5-data.stars%5)+' نجوم لتحصل على هدية!';
- $('soundButton').textContent=data.sound?'🔊 الصوت يعمل':'🔇 الصوت متوقف';
+ $('pStars').textContent=data.stars;
+ $('pPlayed').textContent=data.played;
+ $('pGifts').textContent=data.gifts;
+ $('pLevel').textContent=Math.floor(data.stars/10)+1;
+ $('soundIcon').textContent=data.sound?'🔊':'🔇';
 }
-
-function sound(freq=650){
+function sound(f=650){
  if(!data.sound)return;
  try{
-  audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();
-  if(audioContext.state==='suspended')audioContext.resume();
-  let osc=audioContext.createOscillator();
-  let gain=audioContext.createGain();
-  osc.frequency.value=freq;
-  osc.connect(gain);gain.connect(audioContext.destination);
-  gain.gain.setValueAtTime(.12,audioContext.currentTime);
-  gain.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+.22);
-  osc.start();osc.stop(audioContext.currentTime+.22);
+  audio=audio||new(window.AudioContext||window.webkitAudioContext)();
+  if(audio.state==='suspended')audio.resume();
+  const o=audio.createOscillator();
+  const g=audio.createGain();
+  o.frequency.value=f;
+  o.connect(g);g.connect(audio.destination);
+  g.gain.setValueAtTime(.1,audio.currentTime);
+  g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.2);
+  o.start();o.stop(audio.currentTime+.2);
  }catch(e){}
 }
-
-function speak(text){
- if(!data.sound||!('speechSynthesis'in window))return;
+function speak(t){
+ if(!data.sound||!window.speechSynthesis)return;
  speechSynthesis.cancel();
- let msg=new SpeechSynthesisUtterance(text);
- msg.lang='ar-SA';msg.rate=.8;msg.pitch=1.3;
- speechSynthesis.speak(msg);
+ const s=new SpeechSynthesisUtterance(t);
+ s.lang='ar-SA';s.rate=.8;
+ speechSynthesis.speak(s);
 }
-
-function praise(){
- const words=['أحسنت يا بطل!','رائع جداً!','برافو!','ممتاز يا صديقي!','أنت رائع!'];
- $('message').textContent='🌟 '+words[Math.floor(Math.random()*words.length)];
- speak(words[Math.floor(Math.random()*words.length)]);
- sound(850);
+function say(t){
+ $('message').textContent=t;
+ speak(t);sound(850);
 }
-
-function reward(){
+function addStar(){
+ data.stars++;
+ // هدية مجانية كل خمس نجوم
+ if(data.stars%5===0){
+  data.gifts++;
+  $('message').textContent='🎁 حصلت على هدية جديدة!';
+  speak('مبروك حصلت على هدية');
+ }else{
+  say('👏 أحسنت يا بطل!');
+ }
+ update();save();
+}
+function complete(){
  if(won)return;
  won=true;
- data.stars++;
- update();save();praise();
+ data.played++;
+ addStar();
+ update();save();
 }
-
 function startGame(type){
- current=type;round=0;
+ current=type;won=false;
  $('home').style.display='none';
- $('parentScreen').style.display='none';
+ $('parentsScreen').style.display='none';
  $('gameScreen').style.display='block';
  startRound();
 }
 function startRound(){
- round++;won=false;
+ won=false;gameScore=0;
  $('message').textContent='هيا نلعب يا صديقي ❤️';
- let area=$('playArea');area.innerHTML='';
- if(current==='bubbles')bubblesGame(area);
- if(current==='animals')animalsGame(area);
- if(current==='colors')colorsGame(area);
- if(current==='stars')starsGame(area);
- if(current==='balloons')balloonsGame(area);
- if(current==='shapes')shapesGame(area);
- if(current==='sounds')soundsGame(area);
- if(current==='garden')gardenGame(area);
+ const a=$('playArea');a.innerHTML='';
+ const names={
+ bubbles:'🫧 فقاعات المرح',
+ animals:'🐥 أين الحيوان؟',
+ colors:'🎨 تعلم الألوان',
+ stars:'⭐ اجمع النجوم',
+ balloons:'🎈 بالونات المرح',
+ shapes:'🔺 تعلم الأشكال',
+ sounds:'🐘 أصوات الحيوانات',
+ garden:'🌳 ازرع حديقتك'
+ };
+ $('gameTitle').textContent=names[current];
+ const games={
+ bubbles:bubblesGame,
+ animals:animalsGame,
+ colors:colorsGame,
+ stars:starsGame,
+ balloons:balloonsGame,
+ shapes:shapesGame,
+ sounds:soundsGame,
+ garden:gardenGame
+ };
+ if(games[current])games[current](a);
 }
 
-function bubblesGame(area){
- $('gameTitle').textContent='🫧 فقاعات المرح';
- area.innerHTML='<div class="target">المس الفقاعات الجميلة!</div>';
- let count=0;
+function makeButton(text,cls,fn){
+ const b=document.createElement('button');
+ b.className=cls;b.textContent=text;b.onclick=fn;
+ return b;
+}
+function bubblesGame(a){
+ a.innerHTML='<div class="target">المس خمس فقاعات 🫧</div>';
+ let n=0;
  for(let i=0;i<8;i++){
-  let b=document.createElement('button');
-  b.className='bubble';b.textContent='🫧';
-  b.onclick=()=>{
-   if(b.dataset.done)return;
-   b.dataset.done='1';b.textContent='✨';
-   count++;sound(700+i*50);
-   if(count>=5)reward();
-   else $('message').textContent='رائع! '+count+' فقاعات';
-   setTimeout(()=>b.remove(),300);
-  };
-  area.appendChild(b);
+  let b=makeButton('🫧','bubble',()=>{
+   if(b.dataset.hit)return;
+   b.dataset.hit='1';b.textContent='✨';
+   n++;sound(600+n*50);
+   if(n===5)complete();
+  });
+  a.appendChild(b);
  }
 }
-
 const animals=[
- {emoji:'🐱',name:'القطة',sound:'مياو مياو'},
- {emoji:'🐶',name:'الكلب',sound:'هو هو'},
- {emoji:'🐮',name:'البقرة',sound:'مووو'},
- {emoji:'🐥',name:'العصفور',sound:'تغريد'},
- {emoji:'🐑',name:'الخروف',sound:'ماااع'},
- {emoji:'🐘',name:'الفيل',sound:'الفيل الكبير'}
+ {e:'🐱',n:'القطة',s:'مياو مياو'},
+ {e:'🐶',n:'الكلب',s:'هو هو'},
+ {e:'🐮',n:'البقرة',s:'مووو'},
+ {e:'🐥',n:'العصفور',s:'تغريد'},
+ {e:'🐑',n:'الخروف',s:'ماااع'},
+ {e:'🐘',n:'الفيل',s:'الفيل'}
 ];
-
-function animalsGame(area){
- $('gameTitle').textContent='🐥 أين الحيوان؟';
+function animalsGame(a){
  let target=animals[Math.floor(Math.random()*animals.length)];
- area.innerHTML='<div class="target">أين '+target.name+'؟</div>';
- let options=[target,...animals.filter(a=>a!==target).sort(()=>Math.random()-.5).slice(0,2)].sort(()=>Math.random()-.5);
- let choices=document.createElement('div');choices.className='choices';
- options.forEach(a=>{
-  let btn=document.createElement('button');
-  btn.className='choice';btn.textContent=a.emoji;
-  btn.onclick=()=>{
+ a.innerHTML='<div class="target">أين '+target.n+'؟</div>';
+ let list=[target,...animals.filter(x=>x!==target).sort(()=>Math.random()-.5).slice(0,2)];
+ list.sort(()=>Math.random()-.5);
+ list.forEach(x=>{
+  a.appendChild(makeButton(x.e,'choice',()=>{
    if(won)return;
-   if(a===target){reward();speak(a.sound)}
-   else{$('message').textContent='حاول مرة ثانية ❤️';sound(250)}
-  };
-  choices.appendChild(btn);
+   if(x===target){complete();speak(x.s)}
+   else say('حاول مرة ثانية ❤️');
+  }));
  });
- area.appendChild(choices);
 }
-
 const colors=[
- {name:'الأحمر',code:'#ff4242'},
- {name:'الأزرق',code:'#399bff'},
- {name:'الأصفر',code:'#ffda36'},
- {name:'الأخضر',code:'#47ca72'}
+ {n:'الأحمر',c:'#ff3434'},
+ {n:'الأزرق',c:'#2588ff'},
+ {n:'الأصفر',c:'#ffdf25'},
+ {n:'الأخضر',c:'#38c75d'}
 ];
-function colorsGame(area){
- $('gameTitle').textContent='🎨 تعلم الألوان';
+function colorsGame(a){
  let target=colors[Math.floor(Math.random()*colors.length)];
- area.innerHTML='<div class="target">أين اللون '+target.name+'؟</div>';
- let choices=document.createElement('div');choices.className='choices';
- colors.forEach(c=>{
-  let btn=document.createElement('button');
-  btn.className='colorChoice';btn.style.background=c.code;
-  btn.onclick=()=>{
+ a.innerHTML='<div class="target">أين اللون '+target.n+'؟</div>';
+ colors.forEach(x=>{
+  let b=makeButton('','choice',()=>{
    if(won)return;
-   if(c===target){reward();speak(c.name)}
-   else{$('message').textContent='حاول مرة أخرى 🌈';sound(250)}
-  };
-  choices.appendChild(btn);
+   if(x===target){complete();speak(x.n)}
+   else say('حاول مرة أخرى 🌈');
+  });
+  b.style.background=x.c;a.appendChild(b);
  });
- area.appendChild(choices);
 }
-
-function starsGame(area){
- $('gameTitle').textContent='⭐ اجمع النجوم';
- area.innerHTML='<div class="target">المس خمس نجوم!</div>';
- let count=0;
+function starsGame(a){
+ a.innerHTML='<div class="target">اجمع خمس نجوم ⭐</div>';
+ let n=0;
  for(let i=0;i<5;i++){
-  let b=document.createElement('button');
-  b.className='star';b.textContent='⭐';
-  b.onclick=()=>{
-   if(b.dataset.done)return;
-   b.dataset.done='1';b.style.visibility='hidden';
-   count++;sound(800);
-   if(count===5)reward();
-  };
-  area.appendChild(b);
+  let b=makeButton('⭐','star',()=>{
+   if(b.dataset.hit)return;
+   b.dataset.hit='1';b.style.visibility='hidden';
+   n++;sound(700+n*50);
+   if(n===5)complete();
+  });
+  a.appendChild(b);
  }
 }
-
-function balloonsGame(area){
- $('gameTitle').textContent='🎈 بالونات المرح';
- area.innerHTML='<div class="target">المس البالونات!</div>';
- const palette=['#ff7fae','#65baff','#ffe15c','#a6e88c'];
- let count=0;
- for(let i=0;i<6;i++){
-  let b=document.createElement('button');
-  b.className='balloon';b.style.background=palette[i%4];
-  b.onclick=()=>{
-   if(b.dataset.done)return;
-   b.dataset.done='1';b.textContent='✨';
-   count++;sound(500+count*80);
-   if(count===5)reward();
-  };
-  area.appendChild(b);
+function balloonsGame(a){
+ a.innerHTML='<div class="target">المس خمس بالونات 🎈</div>';
+ let n=0;
+ const palette=['#ff6ca8','#4ebdff','#ffdb4c','#6cda88'];
+ for(let i=0;i<7;i++){
+  let b=makeButton('','balloon',()=>{
+   if(b.dataset.hit)return;
+   b.dataset.hit='1';b.style.visibility='hidden';
+   n++;sound(500+n*60);
+   if(n===5)complete();
+  });
+  b.style.background=palette[i%4];a.appendChild(b);
  }
 }
-
-function shapesGame(area){
- $('gameTitle').textContent='🔺 تعلم الأشكال';
- let list=[
-  {name:'الدائرة',emoji:'🔴'},
-  {name:'المربع',emoji:'🟦'},
-  {name:'المثلث',emoji:'🔺'},
-  {name:'القلب',emoji:'❤️'}
+function shapesGame(a){
+ let shapes=[
+  {e:'🔴',n:'الدائرة'},
+  {e:'🟦',n:'المربع'},
+  {e:'🔺',n:'المثلث'},
+  {e:'❤️',n:'القلب'}
  ];
- let target=list[Math.floor(Math.random()*list.length)];
- area.innerHTML='<div class="target">أين '+target.name+'؟</div>';
- let choices=document.createElement('div');choices.className='choices';
- list.sort(()=>Math.random()-.5).forEach(s=>{
-  let b=document.createElement('button');
-  b.className='choice';b.textContent=s.emoji;
-  b.onclick=()=>{
+ let target=shapes[Math.floor(Math.random()*shapes.length)];
+ a.innerHTML='<div class="target">أين '+target.n+'؟</div>';
+ shapes.sort(()=>Math.random()-.5).forEach(x=>{
+  a.appendChild(makeButton(x.e,'choice',()=>{
    if(won)return;
-   if(s===target){reward();speak(s.name)}
-   else{$('message').textContent='حاول مرة أخرى ❤️';sound(250)}
-  };
-  choices.appendChild(b);
+   if(x===target){complete();speak(x.n)}
+   else say('حاول مرة ثانية ❤️');
+  }));
  });
- area.appendChild(choices);
 }
-
-function soundsGame(area){
- $('gameTitle').textContent='🐘 أصوات الحيوانات';
- let a=animals[Math.floor(Math.random()*animals.length)];
- area.innerHTML='<div class="target">اضغط على الحيوان واسمع صوته!</div>';
- let b=document.createElement('button');
- b.className='animal';b.textContent=a.emoji;
- b.onclick=()=>{
-  speak(a.sound);sound(750);
-  $('message').textContent=a.name+' '+a.sound;
-  if(!won){
-   won=true;data.stars++;update();save();
-   setTimeout(()=>{$('message').textContent='👏 أحسنت!'},700);
-  }
- };
- area.appendChild(b);
+function soundsGame(a){
+ let x=animals[Math.floor(Math.random()*animals.length)];
+ a.innerHTML='<div class="target">المس الحيوان واستمع لصوته</div>';
+ a.appendChild(makeButton(x.e,'choice',()=>{
+  if(won)return;
+  speak(x.s);
+  $('message').textContent=x.n+' '+x.s;
+  complete();
+ }));
 }
-
-function gardenGame(area){
- $('gameTitle').textContent='🌱 ازرع حديقتك';
- area.innerHTML='<div class="target">المس الزهرة لتنمو!</div>';
- let garden=document.createElement('div');
- garden.style.fontSize='75px';garden.textContent='🌱';
- garden.style.padding='20px';
- garden.style.cursor='pointer';
+function gardenGame(a){
+ a.innerHTML='<div class="target">المس النبتة حتى تكبر 🌱</div>';
  let count=0;
- garden.onclick=()=>{
+ let b=makeButton('🌱','choice',()=>{
+  if(won)return;
   count++;
-  garden.textContent=count===1?'🌿':count===2?'🌷':count===3?'🌻':'🌳🦋';
-  sound(600+count*100);
-  if(count>=4)reward();
-  else $('message').textContent='تنمو الحديقة! 🌱';
- };
- area.appendChild(garden);
+  const growth=['🌿','🌷','🌻','🌳🦋'];
+  b.textContent=growth[Math.min(count-1,3)];
+  sound(600+count*80);
+  if(count===4)complete();
+  else $('message').textContent='رائع! النبتة تكبر 🌱';
+ });
+ b.style.width='180px';b.style.height='150px';
+ a.appendChild(b);
 }
-
-function openGift(){
- if(data.stars<5){
-  $('giftText').textContent='اجمع المزيد من النجوم يا بطل ⭐';
-  sound(300);return;
- }
- data.stars-=5;data.gifts++;
- update();save();
- $('rewardBox').textContent=['🧸','🚗','🎈','🦋','🐻'][Math.floor(Math.random()*5)];
- $('giftText').textContent='مفاجأة جميلة! أحسنت 🎉';
- speak('أحسنت حصلت على هدية');
-}
-
-function goHome(){
- if($('gameScreen').style.display==='block'){
-  data.played++;save();
- }
- $('gameScreen').style.display='none';
- $('parentScreen').style.display='none';
- $('home').style.display='block';
- update();
-}
-
 function openParents(){
  $('home').style.display='none';
- $('parentScreen').style.display='block';
+ $('gameScreen').style.display='none';
+ $('parentsScreen').style.display='block';
+ update();
+}
+function goHome(){
+ $('home').style.display='block';
+ $('gameScreen').style.display='none';
+ $('parentsScreen').style.display='none';
  update();
 }
 function toggleSound(){
  data.sound=!data.sound;
- if(!data.sound&&'speechSynthesis'in window)speechSynthesis.cancel();
- update();save();
+ if(!data.sound&&window.speechSynthesis)speechSynthesis.cancel();
+ save();update();
 }
 function resetProgress(){
- if(confirm('هل تريد مسح جميع النجوم والهدايا والتقدم؟')){
-  data.stars=0;data.played=0;data.gifts=0;
-  save();update();
- }
+ if(!confirm('هل تريد حذف كل النجوم والهدايا والتقدم؟'))return;
+ data.stars=0;data.played=0;data.gifts=0;
+ save();update();
 }
 load();
 </script>
